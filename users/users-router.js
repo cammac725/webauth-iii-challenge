@@ -13,4 +13,12 @@ router.get('/', restricted, (req, res) => {
     })
 })
 
+router.get('/:id', restricted, (req, res) => {
+  Users.findById(req.params.id)
+    .then(user => {
+      res.json(user);
+    })
+    .catch(err => res.send(err));
+});
+
 module.exports = router;
